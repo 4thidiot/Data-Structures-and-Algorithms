@@ -12,7 +12,7 @@ class Stack
     public:
     
     //constructor to create the Stack
-    Stack(int s)
+    Stack(int s)  //stl is stacks <int> name;
     {
         size = s;
         top = -1;
@@ -21,7 +21,7 @@ class Stack
     
     //will implement: 1. Push 2. Pop 3. Peek 4. IsEmpty 5. IsSize
     
-    void push(int value)
+    void push(int value)  //stl is same
     {
         if(top==size-1)
             cout<<"Stack overflow\n";
@@ -33,7 +33,7 @@ class Stack
         }
     }
     
-    void pop()
+    void pop() //stl is same
     {
         if(top==-1)
             cout<<"Stack Underflow\n";
@@ -41,7 +41,7 @@ class Stack
             top--;
     }
     
-    int peek()
+    int peek()  //stl is top
     {
         if(top==-1)
         {
@@ -52,12 +52,12 @@ class Stack
             return arr[top];
     }
     
-    bool IsEmpty()
+    bool IsEmpty()  //stl is empty ( S.empty() )
     {
         return top == -1;
     }
     
-    int IsSize()
+    int IsSize()  //stl is S.size()
     {
         return top+1;
     }
