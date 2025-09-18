@@ -83,3 +83,5 @@ int main()
 	
     return 0;
 }
+
+//can create using insert in right order too!
