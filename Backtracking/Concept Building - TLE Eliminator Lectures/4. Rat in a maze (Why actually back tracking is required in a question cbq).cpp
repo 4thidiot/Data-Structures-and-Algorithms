@@ -91,3 +91,49 @@ int main() {
     solve();
     return 0;
 }
+
+
+
+
+
+
+
+
+
+// SHORTER AND BETTER IMPLEMENTATION SINCE MORE GENERALISED
+
+#include <bits/stdc++.h>
+using namespace std;
+
+int di[4] = {0, 1, 0, -1};
+int dj[4] = {1, 0, -1, 0};
+
+int countPaths(int i, int j, int n, int m, vector<vector<int>> &arr) {
+    if (i < 0 || j < 0 || i >= n || j >= m || arr[i][j] == 1) return 0;
+    if (i == n - 1 && j == m - 1) return 1;
+
+    arr[i][j] = 1;
+
+    int cnt = 0;
+    for (int k = 0; k < 4; k++) {
+        cnt += countPaths(i + di[k], j + dj[k], n, m, arr);
+    }
+
+    arr[i][j] = 0;
+    return cnt;
+}
+
+int main() {
+    int n, m;
+    cin >> n >> m;
+
+    vector<vector<int>> arr(n, vector<int>(m));
+    for (int i = 0; i < n; i++) {
+        for (int j = 0; j < m; j++) {
+            cin >> arr[i][j];
+        }
+    }
+
+    cout << countPaths(0, 0, n, m, arr) << endl;
+    return 0;
+}
