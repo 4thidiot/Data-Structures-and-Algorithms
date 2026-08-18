@@ -1,8 +1,8 @@
 #include <bits/stdc++.h>
 using namespace std;
-
+ 
 //Basically finding connected components kind of a question
-
+ 
 void dfs(int curr, vector <vector<int>> &edges, vector <bool> &visited, vector <int> &connected, int &count)
 {
     visited[curr] = true;
@@ -12,10 +12,9 @@ void dfs(int curr, vector <vector<int>> &edges, vector <bool> &visited, vector <
         if(!visited[e])
         {
             dfs(e, edges, visited, connected, count);
-            count++;
         }
 }
-
+ 
 int main()
 {
 	int n, m;
@@ -35,21 +34,23 @@ int main()
 	vector <bool> visited(n+1, false);
 	vector <int> connected(n+1, 0);
 	int count = 0;
+	vector<int> components;
 	
     for(int i=1; i<=n; i++)
         if(!visited[i])
+        {
+            components.push_back(i); //New step
             dfs(i, edges, visited, connected, count);
+            count++;
+        }
             
     // _______________________________________________________
         
-    cout<<count-1<<'\n';
-    
-    for(int i=1; i<n; i++)
+    cout << components.size() - 1 << '\n';
+
+    for(int i = 1; i < components.size(); i++)
     {
-        if(connected[i] != connected[i+1])
-        {
-            cout<<i<<" "<<i+1<<" ";
-        }
+        cout << components[0] << " " << components[i] << '\n';
     }
     
 }
